@@ -1,0 +1,28 @@
+.started-button {
+
+    margin: 10% auto;
+    width: 40%;
+    padding: 0.5rem 1rem;
+    background-color: rgb(163, 23, 163);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    transition: 1s;
+}
+
+.started-button:hover {
+    cursor: pointer;
+    transition: 1s;
+    background-color: rgba(163, 23, 163, 0.9);
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-section {
+    background-color: white;
+}
+
+

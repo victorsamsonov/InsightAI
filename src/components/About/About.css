@@ -1,0 +1,80 @@
+.dropzone-container {
+    /* height: 40vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0 1rem;
+    margin-top: 10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-style: dashed;
+    border-color: rgb(190, 32, 190); */
+
+}
+
+.dropzone {
+    z-index: 100000;
+    height: 40vh;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0 1rem;
+    margin-top: 10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border-style: dashed;
+    border-color: rgb(190, 32, 190);
+}
+
+.dropzone-button {
+    /* width: 50%; */
+    padding: 0.5rem 1rem;
+    background-color: rgb(163, 23, 163);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.dropzone-button:hover {
+    cursor: pointer;
+    background-color: rgba(163, 23, 163, 0.9);
+}
+
+.multi-word-input-container {
+    width: 100%;
+    margin: 1rem auto;
+  }
+  
+.multi-word-input {
+    background-color: white;
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Prevent textarea from being resized by the user */
+     overflow-y: auto; 
+    overflow-wrap: break-word;
+}
+
+.record-title {
+    color: white;
+}
+
+.audio-recorder-container {
+    width: 80%;
+    margin: 0.5rem auto;
+    border: solid 1px red;
+    background-color: red;
+}
+
+.recording-button {
+    padding: 0.5rem 1rem;
+    background-color: rgb(163, 23, 163);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+}
+
+.recording-button:hover {
+    cursor: pointer;
+    background-color: rgba(163, 23, 163, 0.9);
+}
