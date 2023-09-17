@@ -23,8 +23,7 @@ function Customize() {
     setText(event.target.value);
     if (text.length > 20) {
       setProceed(true);
-    }
-    else setProceed(false);
+    } else setProceed(false);
   };
 
   return (
@@ -58,6 +57,13 @@ function Customize() {
           </Row>
         </Container>
       </Container>
+      <div className="description-container">
+        <text className="description">
+          Please enter your prefered style of learning, our models will
+          specifically use your prompt as additional context to help you
+          succeed!
+        </text>
+      </div>
       <div className="multi-word-input-container">
         <textarea
           className="multi-word-input"
@@ -65,7 +71,9 @@ function Customize() {
           value={text}
           onChange={handleTextChange}
         />
+        <text> Enter a minimum of 20 characters</text>
       </div>
+
       {proceed ? (
         <button
           style={{ cursor: "pointer" }}
@@ -88,9 +96,17 @@ function Customize() {
           to="/about"
           // onClick={() => updateExpanded(false)}
         >
-          <Nav.Item style={{ color: "white", backgrounColor: "red", cursor: "none" }}>
+          <Nav.Item
+            style={{ color: "white", backgrounColor: "red", cursor: "none" }}
+          >
             <Nav.Link>
-              <text style={{ color: "white", backgrounColor: "red", cursor: "none" }}>
+              <text
+                style={{
+                  color: "white",
+                  backgrounColor: "red",
+                  cursor: "none",
+                }}
+              >
                 Get Started
               </text>
             </Nav.Link>

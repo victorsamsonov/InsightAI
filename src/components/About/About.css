@@ -37,6 +37,21 @@
     background-color: rgba(163, 23, 163, 0.9);
 }
 
+.dropzone-button2 {
+    /* width: 50%; */
+    padding: 0.5rem 1rem;
+    background-color: rgb(163, 23, 163);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    margin: 1rem 1rem;
+}
+
+.dropzone-button2:hover {
+    cursor: pointer;
+    background-color: rgba(163, 23, 163, 0.9);
+}
+
 .multi-word-input-container {
     width: 100%;
     margin: 1rem auto;
@@ -54,6 +69,11 @@
     overflow-wrap: break-word;
 }
 
+.uploaded-img {
+    max-height: 300px;
+    margin: auto auto;
+}
+
 .record-title {
     color: white;
 }
@@ -65,16 +85,42 @@
     background-color: red;
 }
 
+.description
+
 .recording-button {
     padding: 0.5rem 1rem;
     background-color: rgb(163, 23, 163);
     color: white;
     border-style: none;
     border-radius: 0.5rem;
-    margin: 1rem 0;
+    margin: 1rem 1rem;
+    transition: 1s;
+}
+
+.loader{
+    margin: 0 auto;
+    height: 60px;
 }
 
 .recording-button:hover {
     cursor: pointer;
     background-color: rgba(163, 23, 163, 0.9);
+    transition: 1s;
+}
+
+.predict-button {
+    padding: 0.5rem 1rem;
+    background-color: rgb(23, 163, 112);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    margin: 1rem 1rem;
+    transition: 1s;
+}
+
+.predict-button:hover {
+    cursor: pointer;
+    background-color: rgb(23, 163, 112);
+    transition: 1s;
+    
 }

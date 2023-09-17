@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 
-const DragDropFiles = () => {
+const DragDropFiles = ({ handleFile }) => {
   const [files, setFiles] = useState(null);
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [imgSrc, setImgSrc] = useState(null);
   const inputRef = useRef();
 
   const handleDragOver = (event) => {
@@ -10,36 +12,69 @@ const DragDropFiles = () => {
 
   const handleDrop = (event) => {
     event.preventDefault();
+    console.log(event.dataTransfer.files);
+    const imageUrl = URL.createObjectURL(event.dataTransfer.files[0]);
+    console.log(imageUrl);
+    const path = imageUrl;
+    console.log(path);
+    setImgSrc(path);
     setFiles(event.dataTransfer.files);
+    setIsUploaded(true);
+
+    // handleFile(event.dataTransfer.files, true);
+  };
+
+  const handleSelect = (event) => {
+    event.preventDefault();
+    const imageUrl = URL.createObjectURL(event.target.files[0]);
+    console.log(event.target.files);
+    console.log(imageUrl);
+    const path = imageUrl;
+    console.log(path);
+    setImgSrc(path);
+    setFiles(event.target.files);
+    setIsUploaded(true);
+    // handleFile(event.dataTransfer.files, true);
   };
 
   // send files to the server // learn from my other video
   const handleUpload = () => {
     const formData = new FormData();
     formData.append("Files", files);
-    console.log(formData.getAll());
-    console.log("hello");
-    // fetch(
-    //   "link", {
-    //     method: "POST",
-    //     body: formData
-    //   }
-    // )
+    handleFile(files, true);
+  };
+
+  const handleCancel = () => {
+    setFiles(null);
+    setIsUploaded(false);
+    handleFile(null, false);
   };
 
   if (files)
     return (
-      <div className="uploads">
+      <>
+        <div className="dropzone">
+          <img src={imgSrc} className="uploaded-img" />
+        </div>
         <ul>
           {Array.from(files).map((file, idx) => (
             <li key={idx}>{file.name}</li>
           ))}
         </ul>
         <div className="actions">
-          <button onClick={() => setFiles(null)}>Cancel</button>
-          <button onClick={handleUpload}>Upload</button>
+          <button
+            className="dropzone-button2"
+            onClick={() => {
+              handleCancel();
+            }}
+          >
+            Cancel
+          </button>
+          <button className="dropzone-button2" onClick={handleUpload}>
+            Upload
+          </button>
         </div>
-      </div>
+      </>
     );
 
   return (
@@ -50,7 +85,7 @@ const DragDropFiles = () => {
         <input
           type="file"
           multiple
-          onChange={(event) => setFiles(event.target.files)}
+          onChange={handleSelect}
           hidden
           accept="image/png, image/jpeg"
           ref={inputRef}

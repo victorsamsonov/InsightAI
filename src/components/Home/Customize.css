@@ -25,4 +25,41 @@
     background-color: white;
 }
 
+.description-container {
+    width: 100%;
+    text-align: left;
+    text-indent: 25px;
+    margin-left: 1rem
+}
+
+.description {
+    color: white;
+    margin: 1rem 0;
+    text-align: left;
+    text-indent: 10px; 
+}
+
+.multi-word-input-container {
+    width: 100%;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+  }
+  
+.multi-word-input {
+    background-color: white;
+    width: 90%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Prevent textarea from being resized by the user */
+     overflow-y: auto; 
+    overflow-wrap: break-word;
+}
+
+
+
 
