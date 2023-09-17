@@ -1,3 +1,36 @@
+.about-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.chat-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.filler {
+    margin: auto 0;
+}
+
+.audio-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chat-box {
+    background-color: #a317a3;
+    height: 80%;
+    margin: auto 0;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .dropzone-container {
     /* height: 40vh;
     background-color: rgba(255, 255, 255, 0.9);
@@ -7,8 +40,14 @@
     border-radius: 1rem;
     border-style: dashed;
     border-color: rgb(190, 32, 190); */
-
+    animation: fadein 1s ease-in;
+    flex: 3;
 }
+
+.avatar {
+    max-width: 450px;
+}
+
 
 .dropzone {
     z-index: 100000;
@@ -20,6 +59,7 @@
     border-radius: 1rem;
     border-style: dashed;
     border-color: rgb(190, 32, 190);
+    animation: fadein 1s ease-in;
 }
 
 .dropzone-button {
@@ -79,13 +119,25 @@
 }
 
 .audio-recorder-container {
+    display: flex;
     width: 80%;
-    margin: 0.5rem auto;
-    border: solid 1px red;
-    background-color: red;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
 }
 
 .description
+
+
+
+.loader{
+    margin: 0 auto;
+    min-height: 7.25vh;
+}
+
+.no-loader {
+    min-height: 7.25vh;
+}
 
 .recording-button {
     padding: 0.5rem 1rem;
@@ -95,11 +147,6 @@
     border-radius: 0.5rem;
     margin: 1rem 1rem;
     transition: 1s;
-}
-
-.loader{
-    margin: 0 auto;
-    height: 60px;
 }
 
 .recording-button:hover {
@@ -122,5 +169,35 @@
     cursor: pointer;
     background-color: rgb(23, 163, 112);
     transition: 1s;
-    
 }
+
+.started-button2 {
+    top: 5rem;
+    /* margin:0 auto; */
+    padding: 0.5rem 1rem;
+    background-color: rgb(163, 23, 163);
+    color: white;
+    border-style: none;
+    border-radius: 0.5rem;
+    transition: 1s;
+    position: absolute;
+    width: 25%;
+    left: 37.5%;
+    animation: fadein 1s ease-in;
+}
+
+.started-button2:hover {
+    cursor: pointer;
+    transition: 1s;
+    background-color: rgba(163, 23, 163, 0.9);
+}
+
+.actions{
+    min-height: 10vh;
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }

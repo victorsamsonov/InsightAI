@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import "./About.css";
 
 const DragDropFiles = ({ handleFile }) => {
   const [files, setFiles] = useState(null);
@@ -81,7 +82,6 @@ const DragDropFiles = ({ handleFile }) => {
     <>
       <div className="dropzone" onDragOver={handleDragOver} onDrop={handleDrop}>
         <h1>Drag and Drop a .png or .jpeg</h1>
-        <h1>Or</h1>
         <input
           type="file"
           multiple
@@ -97,6 +97,7 @@ const DragDropFiles = ({ handleFile }) => {
           Select Files
         </button>
       </div>
+      <div className="actions"></div>
     </>
   );
 };
