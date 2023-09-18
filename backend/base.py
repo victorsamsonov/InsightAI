@@ -297,7 +297,7 @@ def generate_response():
         wav_data = base64.b64encode(file.read()).decode('utf-8')
 
     # Cleanup: remove the saved files after processing
-    os.remove(image_path)
+    # os.remove(image_path)
     # os.remove(audio_query_path)
 
     # Return a success message and the path to the generated audio response

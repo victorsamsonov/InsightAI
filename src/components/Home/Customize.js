@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createContext, useContext } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import homeLogo from "../../Assets/home-main.svg";
 import Particle from "../Particle";
@@ -26,6 +26,8 @@ function Customize() {
     } else setProceed(false);
   };
 
+  const StyleContext = createContext({"style":null, "hobbies":null})
+  
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -79,12 +81,16 @@ function Customize() {
           style={{ cursor: "pointer" }}
           className="started-button"
           as={Link}
-          to="/about"
+          
           // onClick={() => updateExpanded(false)}
         >
           <Nav.Item>
-            <Nav.Link as={Link} to="/about">
+            <Nav.Link as={Link} to={{
+            pathname: '/about',
+            state: { styleText: text},
+          }}>
               <text style={{ color: "white" }}>Get Started</text>
+             
             </Nav.Link>
           </Nav.Item>
         </button>

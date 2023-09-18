@@ -16,7 +16,7 @@ import "./robot.svg";
 // import {  } from 'bootstrap-icons';
 const MicRecorder = require("mic-recorder-to-mp3");
 const ROBOT = "./robot.svg";
-function About() {
+function About(props) {
   const [text, setText] = useState("");
   const [isRecording, setIsRecording] = useState(null);
   const [isPredict, setIsPredict] = useState(false);
@@ -30,6 +30,7 @@ function About() {
   const [audio, setAudio] = useState(null);
   const [audioURL, setAudioURL] = useState(null);
   const [loadChat, setLoadChat] = useState(true);
+  const [talking, setTalking] = useState(false);
 
   function transcribe() {
     console.log("axios");
@@ -46,6 +47,7 @@ function About() {
         }
       });
   }
+  console.log(props, "styleText");
   const recorder = new MicRecorder({
     bitRate: 128,
   });
@@ -61,6 +63,7 @@ function About() {
   const obtainLLMResponse = () => {
     // /generate-response
     console.log("LLM");
+    setTalking(false);
     axios
       .post("/generate-response", { audio_query: ocrText })
       .then((response) => {
@@ -68,6 +71,7 @@ function About() {
         console.log(response);
         setAudio(response.data.audio_path);
         setLoadChat(false);
+        setTalking(true);
       })
       .catch((error) => {
         if (error.response) {
@@ -139,14 +143,14 @@ function About() {
     setIsPredict(pred);
   };
 
-  const predict = () => {
+  const predict = async () => {
     const formData = new FormData();
     formData.append("audio", currentRecording.blob, "audio.wav");
     formData.append("file", currFiles[0]);
     console.log("predict");
     setProcessing(true);
     setLoadChat(true);
-    axios
+    await axios
       .post("/predict", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Make sure to set the content type
@@ -164,7 +168,7 @@ function About() {
         setProcessing(false);
         // Handle error
       });
-    obtainLLMResponse();
+    await obtainLLMResponse();
   };
 
   return (
@@ -230,22 +234,44 @@ function About() {
         {/* <ReactLoading type="bars" color="red"/> */}
       </div>
       <div className="chat-container">
-        <h1 style={{ color: "white" }}>Chat</h1>
+        <h1 style={{ color: "white", fontWeight: "lighter" }}>
+          InsightAI personal assistant
+        </h1>
         <div className="chat-box">
           {received ? (
             <div className={"audio-wrapper"}>
               <img className="avatar" src={require("./avatar.png")} />
-              { loadChat ?
+              {loadChat ? (
                 <ReactLoading
                   type="bubbles"
                   color="#17a34a"
                   className="loader"
-                /> : <div style={{"minHeight":"30px"}}></div>
-              }
+                />
+              ) : (
+                <div style={{ minHeight: "30px" }}></div>
+              )}
               <ReactAudioPlayer
                 src={`data:audio/wav;base64,${audio}`}
                 controls={true}
+                autoPlay={true}
               />
+              {talking ? (
+                <ReactLoading type="bars" color="#17a34a" className="loader" />
+              ) : (
+                <div
+                  style={{
+                    minHeight: "30px",
+                    color: "white",
+                    fontSize: "20px",
+                    marginTop: "10px",
+                    fontWeight: "20px",
+                  }}
+                >
+                  <text>
+                    Nice question, give me a minute to think this through!
+                  </text>
+                </div>
+              )}
             </div>
           ) : (
             <h1 className="filler">Upload an image and question</h1>
